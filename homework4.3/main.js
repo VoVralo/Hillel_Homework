@@ -9,6 +9,7 @@ var capitalCities = ["Київ", "Вашингтон", "Лондон"];
 var isCapital = capitalCities.includes(city);
 
 var message;
+
 if (isCapital) {
     if (city === "Київ") {
         message = "Ти живеш у столиці України...";
