@@ -1,53 +1,67 @@
-document.addEventListener("DOMContentLoaded", function() {
-   const form = document.getElementById("contactForm");
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
+const dotsContainer = document.querySelector('.dots-container');
 
-   form.addEventListener("submit", function(event) {
-       event.preventDefault();
+for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    dot.addEventListener('click', () => {
+        showSlide(i);
+    });
+    dotsContainer.appendChild(dot);
+}
 
-       clearErrors();
+const dots = document.querySelectorAll('.dot');
 
-       let isValid = true;
+function showSlide(slideIndex) {
+    if (slideIndex < 0 || slideIndex >= totalSlides) return;
 
-       const nameInput = document.getElementById("name");
-       const nameError = document.getElementById("nameError");
-       if (nameInput.value.trim() === "") {
-           nameError.textContent = "Name is required";
-           isValid = false;
-       }
+    currentSlide = slideIndex;
 
-       const messageInput = document.getElementById("message");
-       const messageError = document.getElementById("messageError");
-       if (messageInput.value.length < 5) {
-           messageError.textContent = "Message must be at least 5 characters";
-           isValid = false;
-       }
+    slides.forEach((slide, index) => {
+        slide.style.transform = `translateX(-${currentSlide * 100}%)`;
+    });
 
-       const phoneInput = document.getElementById("phone");
-       const phoneError = document.getElementById("phoneError");
-       const phoneRegex = /^\+380\d{9}$/;
-       if (!phoneRegex.test(phoneInput.value)) {
-           phoneError.textContent = "Phone number must start with +380";
-           isValid = false;
-       }
+    updateButtonsAndDots();
+}
 
-       const emailInput = document.getElementById("email");
-       const emailError = document.getElementById("emailError");
-       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-       if (!emailRegex.test(emailInput.value)) {
-           emailError.textContent = "Invalid email format";
-           isValid = false;
-       }
+function nextSlide() {
+    if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        showSlide(currentSlide);
+    }
+}
 
-       if (isValid) {
-           console.log("Name:", nameInput.value);
-           console.log("Message:", messageInput.value);
-           console.log("Phone number:", phoneInput.value);
-           console.log("Email:", emailInput.value);
-       }
-   });
+function prevSlide() {
+    if (currentSlide > 0) {
+        currentSlide--;
+        showSlide(currentSlide);
+    }
+}
 
-   function clearErrors() {
-       const errors = document.querySelectorAll(".error");
-       errors.forEach(error => error.textContent = "");
-   }
-});
+function updateButtonsAndDots() {
+    if (currentSlide === 0) {
+        prevBtn.style.display = 'none';
+    } else {
+        prevBtn.style.display = 'block';
+    }
+
+    if (currentSlide === totalSlides - 1) {
+        nextBtn.style.display = 'none';
+    } else {
+        nextBtn.style.display = 'block';
+    }
+
+    dots.forEach((dot, index) => {
+        if (index === currentSlide) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+}
+
+showSlide(currentSlide);

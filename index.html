@@ -3,30 +3,22 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Homework13.1</title>
+   <title>Homework14</title>
    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-   <form id="contactForm" action="#">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required><br>
-      <div id="nameError" class="error"></div><br>
+   <div class="slider-container">
+      <div class="slides">
+          <div class="slide"><img src="image1.jpg" alt="Slide 1"></div>
+          <div class="slide"><img src="image2.jpg" alt="Slide 2"></div>
+          <div class="slide"><img src="image3.jpg" alt="Slide 3"></div>
+      </div>
       
-      <label for="message">Message (min. 5 characters):</label>
-      <textarea id="message" name="message" minlength="5" required></textarea><br>
-      <div id="messageError" class="error"></div><br>
+      <button class="prev" onclick="prevSlide()">Prev</button>
+      <button class="next" onclick="nextSlide()">Next</button>
       
-      <label for="phone">Phone number (+380...):</label>
-      <input type="tel" id="phone" name="phone" pattern="^\+380\d{9}$" required><br>
-      <div id="phoneError" class="error"></div><br>
-      
-      <label for="email">Email (must contain @ and .):</label>
-      <input type="email" id="email" name="email" required><br>
-      <div id="emailError" class="error"></div><br>
-      
-      <button type="submit">Submit</button>
-  </form>
+      <div class="dots-container"></div>
+  </div>
   
    <script src="main.js"></script>
 </body>
