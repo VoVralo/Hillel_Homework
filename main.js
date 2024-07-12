@@ -62,6 +62,7 @@ function updateButtonsAndDots() {
             dot.classList.remove('active');
         }
     });
+    
 }
 
 showSlide(currentSlide);
