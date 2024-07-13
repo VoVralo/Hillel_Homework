@@ -1,0 +1,41 @@
+body {
+   font-family: Arial, sans-serif;
+   padding: 20px;
+}
+
+#app {
+   max-width: 800px;
+   margin: 0 auto;
+}
+
+.student {
+   border: 1px solid #ccc;
+   padding: 10px;
+   margin-bottom: 10px;
+}
+
+.student h2 {
+   margin-top: 0;
+}
+
+.student-info {
+   margin-bottom: 10px;
+}
+
+.student-info span {
+   font-weight: bold;
+}
+
+.student-buttons {
+   margin-top: 10px;
+}
+
+.button {
+   padding: 5px 10px;
+   cursor: pointer;
+   margin-right: 10px;
+}
+
+.button:last-child {
+   margin-right: 0;
+}
