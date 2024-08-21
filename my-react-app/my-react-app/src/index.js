@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import EmojiVote from './components/EmojiVote';
-import './index.css'; // Якщо у вас є CSS для стилів
+import './index.css'; 
 
 ReactDOM.render(
   <React.StrictMode>
